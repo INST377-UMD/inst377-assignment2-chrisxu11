@@ -110,7 +110,7 @@ window.onload = function () {
           const icon = document.createElement("img");
           icon.src = stock.sentiment.toLowerCase() === "bullish" ? bullishImg : bearishImg;
           icon.alt = stock.sentiment;
-          icon.style.width = "40px";
+          icon.style.width = "50px";
           sentimentCell.appendChild(icon);
   
           row.appendChild(tickerCell);
