@@ -1,0 +1,45 @@
+<!-- dogs.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dogs</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/simple-slider@1.0.0/dist/simple-slider.min.js"></script>
+</head>
+<body>
+    <nav id="main-nav">
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="stocks.html">Stocks</a></li>
+            <li><a href="dogs.html">Dogs</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <div id="slider-container" class="slider"></div>
+        <div id="breeds-container" class="breed-buttons"></div>
+        <div id="breed-info" style="display: none;"></div>
+    </div>
+
+    <!-- Audio instructions -->
+    <div class="audio-instructions">
+        <h3>Voice Commands</h3>
+        <dl>
+            <dt>Navigate to a Different Page</dt>
+            <dd>- Say: "Navigate to &lt;page&gt;"</dd>
+            <dt>Change the Page Color</dt>
+            <dd>- Say: "Change the color to &lt;color&gt;"</dd>
+            <dt>Get a Greeting</dt>
+            <dd>- Say: "Hello"</dd>
+            <dt>Load Dog Breed</dt>
+            <dd>- Say: "Load dog breed &lt;breed name&gt;"</dd>
+        </dl>
+        <button onclick="enableVoice()">Turn On Audio</button>
+        <button onclick="disableVoice()">Turn Off Audio</button>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script src="common.js"></script>
+    <script src="dogs.js"></script>
+</body>
+</html>
