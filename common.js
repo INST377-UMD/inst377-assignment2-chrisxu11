@@ -15,10 +15,6 @@ function enableVoice() {
     annyang.start();
 }
 
-function disableVoice() {
-    annyang.abort();
-}
-
 
 function disableVoice() {
     if (annyang) {

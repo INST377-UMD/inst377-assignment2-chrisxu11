@@ -19,7 +19,6 @@ async function loadStockData() {
 
   const url = `https://api.polygon.io/v2/aggs/ticker/${ticker}/range/1/day/${formatDate(fromDate)}/${formatDate(toDate)}?adjusted=true&sort=asc&limit=120&apiKey=${apiKey}`;
 
-  try {
     const res = await fetch(url);
     const data = await res.json();
 
@@ -36,11 +35,28 @@ async function loadStockData() {
     const values = data.results.map((point) => point.c);
 
     renderChart(ticker, labels, values);
-  } catch {
-    alert("Error loading stock data.");
-  }
 }
 
+
+if (annyang) {
+  annyang.removeCommands();
+  annyang.addCommands({
+    'hello': () => alert('Hello!'),
+    'change color to :color': (color) => {
+        document.body.style.backgroundColor = color;
+    },
+    'navigate to :page': (page) => {
+        window.location.href = `${page.toLowerCase()}.html`;
+    }
+});
+  annyang.addCommands({
+      'lookup :ticker': (ticker) => {
+          document.getElementById('tickerInput').value = ticker.toUpperCase();
+          loadStockData();
+      }
+  });
+  annyang.start(); 
+}
 function renderChart(ticker, labels, dataPoints) {
   const ctx = document.getElementById("stockChart").getContext("2d");
 
@@ -85,7 +101,6 @@ window.onload = function () {
     const bearishImg = "https://cdn.corporatefinanceinstitute.com/assets/bear-market.jpeg";
   
     async function loadRedditStocks() {
-      try {
         const response = await fetch('https://tradestie.com/api/v1/apps/reddit?date=2022-04-03');
         const data = await response.json();
   
@@ -119,9 +134,6 @@ window.onload = function () {
   
           tableBody.appendChild(row);
         });
-      } catch {
-        alert("Failed to load Reddit stock data.");
-      }
     }
   
     loadRedditStocks();
