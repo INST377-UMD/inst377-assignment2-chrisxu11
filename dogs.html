@@ -1,0 +1,54 @@
+<!-- dogs.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dogs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.css">
+<script src="https://cdn.jsdelivr.net/npm/glider-js@1/glider.min.js"></script>
+</head>
+<body>
+    <nav id="main-nav">
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="stocks.html">Stocks</a></li>
+            <li><a href="dogs.html">Dogs</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        <h1>Dog Breeds Directory</h1>
+        
+        <div class="glider-contain">
+            <div class="glider" id="slider"></div>
+          </div>
+        
+        <div class="breed-grid" id="breedButtons"></div>
+        
+        <div id="breed-info" class="hidden">
+            <h2 id="breed-name"></h2>
+            <p id="breed-description"></p>
+            <p><strong>Life Span:</strong> <span id="breed-min-life"></span> - <span id="breed-max-life"></span> years</p>
+        </div>
+
+        <div class="audio-instructions">
+            <h3>Voice Commands</h3>
+            <dl>
+                <dt>Load Breed Info</dt>
+                <dd>- Say "Load dog breed &lt;breed name&gt;"</dd>
+                <dt>Navigation</dt>
+                <dd>- Say "Navigate to &lt;page&gt;"</dd>
+                <dt>Color Change</dt>
+                <dd>- Say "Change color to &lt;color&gt;"</dd>
+                <dt>Greeting</dt>
+                <dd>- Say "Hello"</dd>
+            </dl>
+            <button onclick="enableVoice()">Turn On Audio</button>
+            <button onclick="disableVoice()">Turn Off Audio</button>
+        </div>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script src="common.js"></script>
+    <script src="dogs.js"></script>
+</body>
+</html>

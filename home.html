@@ -1,0 +1,70 @@
+<!-- home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav id="main-nav">
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="stocks.html">Stocks</a></li>
+            <li><a href="dogs.html">Dogs</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Welcome</h1>
+       
+        <div class="buttons">
+            <button class="custom-btn" onclick="location.href='stocks.html'">Stocks</button>
+            <button class="custom-btn" onclick="location.href='dogs.html'">Dogs</button>
+        </div>
+    </div>
+    <div id="quote"></div>
+    <div class="audio-instructions">
+        <h3>Voice Commands</h3>
+        <dl>
+            <dt>Naviagate to a Different Page</dt>
+            <dd>- Say:Navigate to (page)</dd>
+            <dt>Change the Page Color</dt>
+            <dd>- Say Change the Color to (color)</dd>
+            <dt> Say Hello Back to you</dt>
+            <dd>- Say Hello</dd>
+          </dl>
+        <button onclick="enableVoice()">Turn On Audio</button>
+        <button onclick="disableVoice()">Turn Off Audio</button>
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+    <script>
+        // Common voice commands
+        const commands = {
+            'hello': () => alert('Hello'),
+            'change the color to :color': (color) => {
+                document.body.style.backgroundColor = color;
+            },
+            'navigate to :page': (page) => {
+                window.location.href = `${page.toLowerCase()}.html`;
+            }
+        };
+
+        function enableVoice() {
+            annyang.addCommands(commands);
+            annyang.start();
+        }
+
+        function disableVoice() {
+            annyang.abort();
+        }
+
+        // Fetch quote
+        fetch('https://zenquotes.io/api/random')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('quote').innerHTML = data[0].q + ' - ' + data[0].a;
+            });
+    </script>
+</body>
+</html>
